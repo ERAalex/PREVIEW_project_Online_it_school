@@ -1,13 +1,15 @@
 #### E.R.A. - Espinosa Rozov Alexander - python developer.
 
-# Commercial project - Department of Foreign Languages. School 205.
+# Commercial project - Online platform for teaching computer science to school students.
 
 <img src="https://github.com/ERAalex/PREVIEW_project_Online_it_school/blob/main/gym205_python/website_it_school.jpg">
 <p>
   <img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white">
 </p>
+<p><a href="https://github.com/ERAalex/PREVIEW_project_Online_it_school/blob/main/gym205_python/website_it_school_2.jpg" target="_blank">More images</a>
+</p>
 <br>
-<p><a href="https://school.gym205.ru/esp_kafedra" target="_blank">➡️ Check out my work - Website. Department of Foreign Languages. School 205. </a></p>
+<p><a href="https://edu.gym205.ru/" target="_blank">➡️ Check out my work - Website. Online It tecnologies - School 205. </a></p>
 
 ## Attention 
 In this github repository is only part of a commercial project, if you are an employer and want to see the whole project, write to me and I will provide access to a private repository: 
