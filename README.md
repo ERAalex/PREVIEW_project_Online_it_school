@@ -2,7 +2,7 @@
 
 # Commercial project - Department of Foreign Languages. School 205.
 
-<img src="https://github.com/ERAalex/PREVIEW_project_205_kafedra_website/blob/main/website_school.jpg">
+<img src="https://github.com/ERAalex/PREVIEW_project_Online_it_school/blob/main/gym205_python/website_it_school.jpg">
 <p>
   <img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white">
 </p>
