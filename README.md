@@ -1,13 +1,15 @@
 #### E.R.A. - Espinosa Rozov Alexander - python developer.
 
-# Commercial project - Department of Foreign Languages. School 205.
+# Commercial project - Online platform for teaching computer science to school students.
 
-<img src="https://github.com/ERAalex/PREVIEW_project_205_kafedra_website/blob/main/website_school.jpg">
+<img src="https://github.com/ERAalex/PREVIEW_project_Online_it_school/blob/main/gym205_python/website_it_school.jpg">
 <p>
   <img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white">
 </p>
+<p><a href="https://github.com/ERAalex/PREVIEW_project_Online_it_school/blob/main/gym205_python/website_it_school_2.jpg" target="_blank">More images</a>
+</p>
 <br>
-<p><a href="https://school.gym205.ru/esp_kafedra" target="_blank">➡️ Check out my work - Website. Department of Foreign Languages. School 205. </a></p>
+<p><a href="https://edu.gym205.ru/" target="_blank">➡️ Check out my work - Website. Online It tecnologies - School 205. </a></p>
 
 ## Attention 
 In this github repository is only part of a commercial project, if you are an employer and want to see the whole project, write to me and I will provide access to a private repository: 
@@ -21,10 +23,11 @@ In this github repository is only part of a commercial project, if you are an em
       <img src="https://github.com/ERAalex/PREVIEW_project_site_buisness_card_Maria-/blob/main/website_icons.jpg" >
     </a>
 
-The website was commissioned by a foreign language department. The task was to create a stylish and functional application. Django was selected for creation.
-The following technologies have been implemented on the site:  <br>
+The project was commissioned by computer science teachers. It was necessary to create an educational place where students can view courses in Python, HTML and CSS, databases, Multimedia:  <br>
 - Stylish design and easy to use <br>
-- Сreating an administrator's office for the ability to change content (texts, pictures) by the customer himself, without contacting the programmer.
+- Different technologies of protection against bots. ReCapcha, Email Authentification, etc.  <br>
+- Creating a personal account of students. Ability to upload files to the server (Homeworks).
+- Creating a personal account of admins and teachers. Ability to check Homeworks, put the notes and see all files of students on server.
 - Loading the site on Reg.ru hosting and subsequent support.
 - Installing SSL-certificates.
 
