@@ -2,7 +2,7 @@
 
 # Commercial project - Online platform for teaching computer science to school students.
 
-<img src="https://github.com/ERAalex/PREVIEW_project_Online_it_school/blob/main/gym205_python/website_it_school.jpg">
+<img src="https://github.com/ERAalex/PREVIEW_project_Online_it_school/blob/main/gym205_python/website_it_school_0.jpg">
 <p>
   <img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white">
 </p>
