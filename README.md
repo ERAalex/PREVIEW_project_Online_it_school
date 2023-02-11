@@ -26,6 +26,7 @@ In this github repository is only part of a commercial project, if you are an em
 The project was commissioned by computer science teachers. It was necessary to create an educational place where students can view courses in Python, HTML and CSS, databases, Multimedia:  <br>
 - Stylish design and easy to use <br>
 - Different technologies of protection against bots. ReCapcha, Email Authentification, etc.  <br>
+- Different API - Gmail, etc.
 - Creating a personal account of students. Ability to upload files to the server (Homeworks).
 - Creating a personal account of admins and teachers. Ability to check Homeworks, put the notes and see all files of students on server.
 - Loading the site on Reg.ru hosting and subsequent support.
