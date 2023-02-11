@@ -1,0 +1,190 @@
+
+{% load static %}
+
+<html>
+	<head>
+		<title>START IT GYM205</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/main_page/assets/css/main.css" />
+		<link rel="stylesheet" href="static/my_css.css" />
+		<noscript><link rel="stylesheet" href="static/main_page/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="logo">
+							<span class="icon fa-gem"></span>
+						</div>
+						<div class="content">
+							<div class="inner">
+								<h1>ГБОУ гимназия № 205</h1>
+								<p>Образовательная платформа для изучения <a href="#">IT технологий</a><br />
+								учениками <a href="#">гимназии.</a></p>
+
+								{% for message in messages %}
+								<div class="alert alert-danger" role="alert">
+									<p><font color="#baa910">{{message}}</font></p>
+								</div>
+								{% endfor %}
+
+								{% if user.is_authenticated %}
+								<p>Здравствуй, {{ user.username }}!</p>
+								{% else %}
+								<p>Вы не зарегистрированы</p>
+								{% endif %}
+
+								<!-- Если была попытка пройти на сайт без регистр, выдаем ниже предупреждение -->
+								{% if not_registr %}
+								<p><font color="#baa910">{{not_registr}}</font></p>
+								{% endif %}
+
+							</div>
+						</div>
+						<nav>
+							<ul>
+
+								{% if user.is_authenticated %}
+								<li><a href="{% url 'main_index' %}">На сайт</a></li>
+								{% else %}
+								<li><a href="#intro">Регистрация</a></li>
+								{% endif %}
+
+
+								{% if user.is_authenticated %}
+								<!--?next={% url... сделано так иначе будет выкидывать на некрасивый выходи из админки-->
+								<li><a href="{% url 'logout' %}?next={% url 'start_index' %}"><span class="el">ку</span>
+									Выйти <span class="el">ку</span> </a></li>
+								{% else %}
+								<li><a href="{% url 'login_user' %}">Войти</a></li>
+								{% endif %}
+
+
+								{% if user.is_authenticated %}
+								<li><a href="#about">О проекте</a></li>
+								{% else %}
+								<li><a href="#about"><span class="el">у</span>О проекте</a></li>
+								{% endif %}
+
+								<li><a href="#contact">Контакты</a></li>
+								<!--<li><a href="#elements">Elements</a></li>-->
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Intro -->
+							<article id="intro">
+								<h2 class="major">Регистрация</h2>
+								<span class="image main"><img src="static/main_page/images/pic01.jpg" alt="" /></span>
+								<form action="." method="post">
+									{% csrf_token %}
+									{{ user_form.as_p }}
+          						<p><input type="submit" class="button button-header" value="Создать аккаунт"></p>
+      							</form>
+
+								<p>- Заполните все поля для регистрации на сайте.
+									<br><br>- После регистрации сотрудник платформы проверит и активирует Ваш аккаунт
+									(в течении дня) и Вы сможете пользоваться всеми возможностями.
+								<br><br>- Обратите внимание на правильное заполнение!</p>
+
+							</article>
+
+
+
+						<!-- About -->
+							<article id="about">
+								<h2 class="major">О проекте</h2>
+								<span class="image main"><img src="static/main_page/images/pic03.jpg" alt="" /></span>
+								<p>Образовательный проект создан разработчиками:
+									<br>- Espinosa Cejas Francisco & Espinosa Rozov Alexander. <br>
+									- Дата старта проекта: Январь 2023 г. <br><br>
+								Направлен на изучение IT технологий. Подготовку учащихся к успешной сдаче ОГЭ и ЕГЭ
+								по информатике.</p>
+							</article>
+
+						<!-- Contact -->
+							<article id="contact">
+								<h2 class="major">Контакты</h2>
+
+
+								 <form action="contact_start" method="post" class="form-horizontal">
+									{% csrf_token%}
+									<div class="fields">
+										<div class="field half">
+											<label>Руководители проекта:</label>
+											1. Espinosa Ceja Francisco <br>
+											2. Espinosa Rozov Alexander
+										</div>
+										<div class="field half">
+											<label>EMAIL</label>
+											it.tecnologies@yandex.ru<br>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label for="contact_mail2">Ваша почта</label>
+										<input type="text" class="form-control" name="contact_mail" id="contact_mail2" placeholder="Введите почту">
+									</div>
+
+									 <p></p>
+
+									 <div class="field">
+										 <label for="contact_message2">Сообщение</label>
+										 <textarea name="contact_message" id="contact_message2" rows="4"></textarea>
+									 </div>
+
+									<p></p>
+
+									<ul class="actions">
+										<li><input type="submit" value="Отправить сообщение" class="primary"></li>
+										<li><input type="reset" value="Сбросить"></li>
+									</ul>
+
+									<div class="form-group">
+										{% for message in messages %}
+										<div class="alert alert-danger" role="alert">
+											{{message}}
+										</div>
+										{% endfor %}
+									</div>
+								</form>
+
+
+
+								<ul class="icons">
+									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</article>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; ERA</p>
+					</footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="static/main_page/assets/js/jquery.min.js"></script>
+			<script src="static/main_page/assets/js/browser.min.js"></script>
+			<script src="static/main_page/assets/js/breakpoints.min.js"></script>
+			<script src="static/main_page/assets/js/util.js"></script>
+			<script src="static/main_page/assets/js/main.js"></script>
+
+
+	</body>
+</html>

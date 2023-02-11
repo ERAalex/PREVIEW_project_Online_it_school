@@ -1,0 +1,89 @@
+{% load static %}
+
+<html>
+	<head>
+		<title>VERIFICATION GYM205</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/main_page/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="static/main_page/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="logo">
+							<span class="icon fa-gem"></span>
+						</div>
+						<div class="content">
+							<div class="inner">
+								<h1>ГБОУ гимназия № 205</h1>
+								<p>ПОДТВЕРЖДЕНИЕ АККАУНТА</p>
+
+								{% for message in messages %}
+								<div class="alert alert-danger" role="alert">
+									<p><font color="#baa910">{{message}}</font></p>
+								</div>
+								{% endfor %}
+
+								 <form action="verification_ind" method="post" class="form-horizontal">
+									{% csrf_token%}
+									<div class="form-group">
+										<label for="email">Email</label>
+										<input type="text" class="form-control" name="email" id="email" placeholder="Введите почту">
+									</div>
+									 <p></p>
+
+									<div class="form-group">
+										<label for="registr_code">Регистрационный код из почты</label>
+										<input type="password" class="form-control" name="registr_code"
+											   id="registr_code" placeholder="Введите код">
+									</div>
+ 									<p></p>
+
+									 <div class="form-group">
+										<label for="teacher_code">Регистрационный код учителя</label>
+										<input type="password" class="form-control" name="teacher_code"
+											   id="teacher_code" placeholder="Введите код">
+									</div>
+
+									 <br>
+									<button type="submit" class="btn btn-primary">Закончить регистрацию</button>
+									<button type="submit" class="btn btn-primary"><a href="{% url 'start_index' %}">НАЗАД</a></button>
+									<br />
+									<div class="form-group">
+
+
+
+									</div>
+								</form>
+
+
+							</div>
+						</div>
+					</header>
+
+
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; ERA</p>
+					</footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="static/main_page/assets/js/jquery.min.js"></script>
+			<script src="static/main_page/assets/js/browser.min.js"></script>
+			<script src="static/main_page/assets/js/breakpoints.min.js"></script>
+			<script src="static/main_page/assets/js/util.js"></script>
+			<script src="static/main_page/assets/js/main.js"></script>
+
+	</body>
+</html>

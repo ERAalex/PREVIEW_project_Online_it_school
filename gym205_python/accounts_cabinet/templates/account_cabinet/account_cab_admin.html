@@ -1,0 +1,462 @@
+
+{% load static %}
+
+<html>
+	<head>
+		<title>Панель администратора - {{ user.username }} </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'main_gym_page/assets/css/main.css' %}" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="https://github.com/ERAalex" target="_blank">Espinosa project</a></h1>
+						<nav class="links">
+							<ul>
+								<li><a href="#">Добро пожаловать, {{ user.username }}</a></li>
+								<li><a href="{% url 'logout' %}?next={% url 'start_index' %}">Выйти</a></li>
+								<li><a href="{% url 'personal_account' %}">Мой кабинет</a></li>
+								<li><a href="#">Информация</a></li>
+								<li><a href="#">Помощь</a></li>
+							</ul>
+						</nav>
+						<nav class="main">
+							<ul>
+								<li class="search">
+									<a class="fa-search" href="#search">Search</a>
+									<form id="search" method="get" action="#">
+										<input type="text" name="query" placeholder="Search" />
+									</form>
+								</li>
+								<li class="menu">
+									<a class="fa-bars" href="#menu">Menu</a>
+								</li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<section id="menu">
+
+						<!-- Search -->
+							<section>
+								<form class="search" method="get" action="#">
+									<input type="text" name="query" placeholder="Search" />
+								</form>
+							</section>
+
+						<!-- Links -->
+							<section>
+								<ul class="links">
+									<li>
+										<a href="#">
+											<h3>Python</h3>
+											<p>Курс по основам языка Python</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>Databases</h3>
+											<p>Курс по базам данных</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>HTML & CSS</h3>
+											<p>Курс по HTML5 и работе с CSS</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>Sound & Video</h3>
+											<p>Работа с редакторами аудио и видео файлов</p>
+										</a>
+									</li>
+								</ul>
+							</section>
+
+						<!-- Actions -->
+							<section>
+								<ul class="actions stacked">
+									<li><a href="{% url 'logout' %}?next={% url 'start_index' %}"
+										   class="button large fit">Выйти из аккаунта</a></li>
+								</ul>
+							</section>
+
+					</section>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+
+
+										<h2><a href="#">Панель проверки работ студентов: </a></h2>
+										<p>просмотр работ</p>
+
+
+
+
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2015-11-01">{{date_now}}</time>
+										<a href="#" class="author"><span class="name">{{result_email}}</span>
+											<img src="{% static 'main_gym_page/images/avatar.jpg' %}" alt="" /></a>
+									</div>
+								</header>
+								<a href="single.html" class="image featured">
+									<img src="{% static 'main_gym_page/images/ur_cabinete.jpg' %}" alt="" /></a>
+								<p> В личном кабинете вы смоежете просмотреть Ваши файлы, которые хранятся на сервере.
+									Вы можете загружать информацию для ее проверки учителем, также есть возможность
+									удалить не нужные файлы. В дальнешем функции личного кабинета будут расширены.
+									</p>
+								<footer>
+									<ul class="actions">
+										<li><a href="single.html" class="button large">Продолжить читать</a></li>
+									</ul>
+									<ul class="stats">
+										<li><a href="#" class="icon solid fa-heart">28</a></li>
+										<li><a href="#" class="icon solid fa-comment">128</a></li>
+									</ul>
+								</footer>
+							</article>
+
+
+
+
+						<!---------------- Файловый архив ---------------->
+							<article class="post">
+
+								<p><h3>Найти студента по логину:</h3>
+
+								<form action="find_student" method="post" class="form-horizontal">
+									{% csrf_token%}
+									<div class="form-group">
+										<input type="text" class="form-control" name="find" id="find"
+											   placeholder="напишите имя аккаунта">
+									</div>
+									<button type="submit" class="button large">Найти</button>
+								</form>
+
+								<p><h3>Найти студента по классу:</h3>
+								<form action="find_student_class" method="post" class="form-horizontal">
+									{% csrf_token%}
+									<div class="form-group">
+										<select name="find_class">
+											<option value="11a">11a</option>
+											<option value="11b">11b</option>
+											<option value="10a">10a</option>
+											<option value="10b">10b</option>
+											<option value="6a">6a</option>
+											<option value="4v">4v</option>
+										</select>
+									</div>
+									<button type="submit" class="button large">Найти</button>
+								</form>
+								<button class="button large"><a href="{% url 'admin_acc' %}">Смотреть всех учеников</a></button>
+
+								{{result_check}}
+								<p><h3>Личные данные ученика</h3>
+								{% for item in personal_data %}
+
+									Логин ученика:  {{item.user_name}} <br>
+									Имя ученика:  {{item.user_real_name}} <br>
+									Класс ученика:  {{item.class_grade}} <br>
+								{% endfor %}
+
+									{% for message in messages %}
+										<div class="alert alert-danger" role="alert">
+											<h3><font color="green">{{message}}</font></h3>
+										</div>
+								    {% endfor %}
+								</p>
+
+
+								{% for item in homeworks_pyth %}
+								<p><h3>Задания по курсу Python</h3>
+									- Урок № {{item.name_lesson.lesson_number}} <br>
+									- Название: {{item.name_lesson.lesson_name}} <br>
+									- Название файла:
+								{{item.file_lesson}}<br>
+									- Дата загрузки: {{item.date_done}} <br>
+									- Статус: {% if item.note_puntos == 'не проверено' or item.note_puntos == 'не зачет' %}
+													<font color="red">{{item.note_puntos}}</font>
+													<a href="{% url 'new_note' item.id %}">
+													- изменить оценку</a> <br>
+												{% else %}
+													<font color="green">{{item.note_puntos}}</font>
+													<a href="{% url 'new_note' item.id %}">
+																	- изменить оценку</a> <br>
+												{% endif %}
+								- <a href="{% url 'change_show' item.id item.user_login %}">Больше не показывать</a><br>
+								<br><br>
+								{% endfor %}
+								<br>
+
+
+								{% for item in homeworks_html %}
+								<p><h3>Задания по курсу HTML</h3>
+									- Урок № {{item.name_lesson.lesson_number}} <br>
+									- Название: {{item.name_lesson.lesson_name}} <br>
+									- Название файла:
+								{{item.file_lesson}}<br>
+									- Дата загрузки: {{item.date_done}} <br>
+									- Статус: {% if item.note_puntos == 'не проверено' or item.note_puntos == 'не зачет' %}
+													<font color="red">{{item.note_puntos}}</font>
+													<a href="{% url 'html_new_note' item.id %}">
+													- изменить оценку</a> <br>
+												{% else %}
+													<font color="green">{{item.note_puntos}}</font>
+													<a href="{% url 'html_new_note' item.id %}">
+																	- изменить оценку</a> <br>
+												{% endif %}
+								- <a href="{% url 'change_show_html' item.id item.user_login %}">Больше не показывать</a><br>
+								<br><br>
+								{% endfor %}
+								<br><br>
+
+
+
+								<p><h3>Файлы в папке:</h3>
+								{% for key, value in all_files.items %}
+									Логин студента: <a href="{% url 'find_student_no_post' key %}">{{key}}</a>
+
+									{% for key_r, value_r in all_real_names.items %}
+										{% if key == key_r %}
+											<br>Имя студента: {{value_r}}
+										{% endif %}
+									{% endfor %}
+
+									<br>Файлы: <br>
+									{% for item in value %}
+										<a href="{% url 'download_file' key item %}">{{item}} </a> --
+										<a href="{% url 'delete_simple_admin' key item %}">Удалить</a><br>
+
+										{% endfor %}
+											<br><br>
+								{% endfor %}
+
+
+
+								{{ error_files }} <br>
+
+
+							</article>
+
+
+
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2><a href="#">Euismod et accumsan</a></h2>
+										<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2015-10-22">October 22, 2015</time>
+										<a href="#" class="author"><span class="name">Jane Doe</span>
+											<img src="{% static 'main_gym_page/images/avatar.jpg' %}" alt="" /></a>
+									</div>
+								</header>
+								<a href="#" class="image featured">
+									<img src="{% static 'main_gym_page/images/pic03.jpg' %}" alt="" /></a>
+								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl.
+									Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim,
+									ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper.
+									Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus
+									vitae, ultricies congue gravida diam non fringilla. Cras vehicula tellus eu
+									ligula viverra, ac fringilla turpis suscipit. Quisque vestibulum rhoncus ligula.</p>
+								<footer>
+									<ul class="actions">
+										<li><a href="#" class="button large">Continue Reading</a></li>
+									</ul>
+									<ul class="stats">
+										<li><a href="#">General</a></li>
+										<li><a href="#" class="icon solid fa-heart">28</a></li>
+										<li><a href="#" class="icon solid fa-comment">128</a></li>
+									</ul>
+								</footer>
+							</article>
+
+
+
+
+
+
+						<!-- Pagination -->
+							<ul class="actions pagination">
+								<li><a href="" class="disabled button large previous">Previous Page</a></li>
+								<li><a href="#" class="button large next">Next Page</a></li>
+							</ul>
+
+					</div>
+
+				<!-- Sidebar -->
+					<section id="sidebar">
+
+						<!-- Intro -->
+							<section id="intro">
+								<a href="#" class="logo">
+									<img src="{% static 'main_gym_page/images/logo.jpg' %}" alt="" /></a>
+								<header>
+									<h2>IT School Tecnologies</h2>
+									<p>образовательный ресурс для изучения программирования</a></p>
+								</header>
+							</section>
+
+						<!-- Mini Posts -->
+							<section>
+								<div class="mini-posts">
+
+									<!-- Mini Post -->
+										<article class="mini-post">
+											<header>
+												<h3><a href="{% url 'course_python'%}">Python</a></h3>
+												<time class="published" datetime="2015-10-20">Полный начальный курс</time>
+												<a href="{% url 'course_python'%}" class="author">
+													<img src="{% static 'main_gym_page/images/avatar.jpg' %}" alt="" /></a>
+											</header>
+											<a href="{% url 'course_python'%}" class="image">
+												<img src="{% static 'main_gym_page/images/pic04.jpg' %}" alt="" /></a>
+										</article>
+
+									<!-- Mini Post -->
+										<article class="mini-post">
+											<header>
+												<h3><a href="#">Databases</a></h3>
+												<time class="published" datetime="2015-10-19">Основы баз данных</time>
+												<a href="#" class="author">
+													<img src="{% static 'main_gym_page/images/avatar.jpg' %}" alt="" /></a>
+											</header>
+											<a href="#" class="image">
+												<img src="{% static 'main_gym_page/images/pic05.jpg' %}" alt="" /></a>
+										</article>
+
+									<!-- Mini Post -->
+										<article class="mini-post">
+											<header>
+												<h3><a href="{% url 'course_html'%}">HTML & CSS</a></h3>
+												<time class="published" datetime="2015-10-18">Верстка страниц HTML5 и дизайн</time>
+												<a href="{% url 'course_html'%}" class="author">
+													<img src="{% static 'main_gym_page/images/avatar.jpg' %}" alt="" /></a>
+											</header>
+											<a href="{% url 'course_html'%}" class="image">
+												<img src="{% static 'main_gym_page/images/pic06.jpg' %}" alt="" /></a>
+										</article>
+
+									<!-- Mini Post -->
+										<article class="mini-post">
+											<header>
+												<h3><a href="#">Sound & Video</a></h3>
+												<time class="published" datetime="2015-10-17">Работа со звуком и видео</time>
+												<a href="#" class="author">
+													<img src="{% static 'main_gym_page/images/avatar.jpg' %}" alt="" /></a>
+											</header>
+											<a href="#" class="image">
+												<img src="{% static 'main_gym_page/images/pic07.jpg' %}" alt="" /></a>
+										</article>
+
+								</div>
+							</section>
+
+						<!-- Posts List -->
+							<section>
+								<ul class="posts">
+									<li>
+										<article>
+											<header>
+												<h3><a href="#">Lorem ipsum fermentum ut nisl vitae</a></h3>
+												<time class="published" datetime="2015-10-20">October 20, 2015</time>
+											</header>
+											<a href="#" class="image">
+												<img src="{% static 'main_gym_page/images/pic08.jpg' %}" alt="" /></a>
+										</article>
+									</li>
+									<li>
+										<article>
+											<header>
+												<h3><a href="#">Convallis maximus nisl mattis nunc id lorem</a></h3>
+												<time class="published" datetime="2015-10-15">October 15, 2015</time>
+											</header>
+											<a href="#" class="image">
+												<img src="{% static 'main_gym_page/images/pic09.jpg' %}" alt="" /></a>
+										</article>
+									</li>
+									<li>
+										<article>
+											<header>
+												<h3><a href="single.html">Euismod amet placerat vivamus porttitor</a></h3>
+												<time class="published" datetime="2015-10-10">October 10, 2015</time>
+											</header>
+											<a href="#" class="image">
+												<img src="{% static 'main_gym_page/images/pic10.jpg' %}" alt="" /></a>
+										</article>
+									</li>
+									<li>
+										<article>
+											<header>
+												<h3><a href="single.html">Magna enim accumsan tortor cursus ultricies</a></h3>
+												<time class="published" datetime="2015-10-08">October 8, 2015</time>
+											</header>
+											<a href="#" class="image">
+												<img src="{% static 'main_gym_page/images/pic11.jpg' %}" alt="" /></a>
+										</article>
+									</li>
+									<li>
+										<article>
+											<header>
+												<h3><a href="#">Congue ullam corper lorem ipsum dolor</a></h3>
+												<time class="published" datetime="2015-10-06">October 7, 2015</time>
+											</header>
+											<a href="#" class="image">
+												<img src="{% static 'main_gym_page/images/pic12.jpg' %}" alt="" /></a>
+										</article>
+									</li>
+								</ul>
+							</section>
+
+						<!-- About -->
+							<section class="blurb">
+								<h2>О проекте</h2>
+								<p>Проект полностью образовательный и не носит в себе коммерческих целей. Главная задача
+									не только научить программированию, но и привить любовь к изучению IT
+									технологий.</p>
+								<ul class="actions">
+									<li><a href="#" class="button">Читать больше</a></li>
+								</ul>
+							</section>
+
+						<!-- Footer -->
+							<section id="footer">
+								<ul class="icons">
+									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
+									<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+								<p class="copyright">&copy; Espinosa Rozov A.</p>
+							</section>
+
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'main_gym_page/assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'main_gym_page/assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'main_gym_page/assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'main_gym_page/assets/js/util.js' %}"></script>
+			<script src="{% static 'main_gym_page/assets/js/main.js' %}"></script>
+
+	</body>
+</html>

@@ -1,0 +1,81 @@
+{% extends "courses/courses_index.html" %}
+
+		{% block name_page %}
+		<title>HTML & CSS course</title>
+		{% endblock %}
+
+
+
+{% block the_main_post %}
+<header>
+    <div class="title">
+        <h2><a href="single.html" ><center>Добро пожаловать на: <br> курс HTML & CSS.</center></a></h2>
+        <p>HTML (Hypertext Markup Language) - это код, который используется для структурирования и
+            отображения веб-страницы и её контента.</p>
+    </div>
+
+    <div class="meta">
+        <time class="published" datetime="2015-11-01">{{date_now}}</time>
+        <a href="#" class="author"><span class="name">{{ user.username }}</span>
+            <img src="static/main_gym_page/images/avatar.jpg" alt="" /></a>
+    </div>
+
+
+
+</header>
+<a href="#" class="image featured"><img src="static/main_page/images/post_0_html.jpg" alt="" /></a>
+<p>HTML и CSS - Эти две технологии необходимы для верстки сайта. Верстка – это расположение текста,
+    изображений, кнопок и других элементов интерфейса на странице. С помощью HTML мы можем добавлять
+    и описывать эти элементы. Изначально они будут «сырыми», со стандартным внешним видом. Для изменения
+    стиля используется CSS. Он позволяет задавать цвет, размер, расположение и десятки
+    других параметров внешнего вида элемента.</p>
+<footer>
+    <ul class="actions">
+<li><a href="https://webref.ru/html"
+       target="_blank" class="button large">Продолжить читать</a></li>
+    </ul>
+    <ul class="stats">
+        <li><a href="#">General</a></li>
+        <li><a href="#" class="icon solid fa-heart">28</a></li>
+        <li><a href="#" class="icon solid fa-comment">128</a></li>
+    </ul>
+</footer>
+</article>
+
+{% endblock %}
+
+
+{% block post2 %}
+<article class="post">
+    <header>
+        <div class="title">
+            <h2><a href="#">Вводный блок по курсу:</a></h2>
+            <p>Вы можете приступить к изучению</p>
+        </div>
+
+
+    <div class="meta">
+        <time class="published" datetime="2015-11-01">Вводный курс</time>
+        <time class="published" datetime="2015-11-01">Всего уроков: </time>
+        <h2>{{total_articles}}</h2>
+    </div>
+
+    </header>
+    <a href="#" class="image featured"><img src="static/main_page/images/fill_pale.jpg" alt="" /></a>
+    <p><h2>Уроки: </h2></p>
+
+    {% for item in all_articles_html %}
+    <h3>{{item.lesson_number}} - <a href="/html/{{item.id}}" >{{item.lesson_name}}</a></h3>
+    {% endfor %}
+    <br>
+    <br>
+
+
+
+</article>
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,81 @@
+{% extends "courses/courses_index.html" %}
+
+		{% block name_page %}
+		<title>Python course</title>
+		{% endblock %}
+
+
+
+{% block the_main_post %}
+<header>
+    <div class="title">
+        <h2><a href="single.html" ><center>Добро пожаловать на: <br> курс Python.</center></a></h2>
+        <p>Python — высокоуровневый язык программирования, отличающийся эффективностью,
+            простотой и универсальностью использования.</p>
+    </div>
+
+    <div class="meta">
+        <time class="published" datetime="2015-11-01">{{date_now}}</time>
+        <a href="#" class="author"><span class="name">{{ user.username }}</span>
+            <img src="static/main_gym_page/images/avatar.jpg" alt="" /></a>
+    </div>
+
+
+
+</header>
+<a href="#" class="image featured"><img src="static/main_page/images/post_0_banner.jpg" alt="" /></a>
+<p>Язык Python является одним из самых простых в изучении и самых приятных в использовании из языков программирования,
+    получивших широкое распространение. Программный код на языке Python легко читать и писать, и,
+    будучи лаконичным, он не выглядит загадочным. Python - очень выразительный язык, позволяющий
+    уместить приложение в меньшее количество строк, чем на это потребовалось бы в других языках,
+    таких как C++ или Java..</p>
+<footer>
+    <ul class="actions">
+<li><a href="https://tproger.ru/articles/podrobnoe-opisanie-jazyka-python-dlja-nachinajushhih/"
+       target="_blank" class="button large">Продолжить читать</a></li>
+    </ul>
+    <ul class="stats">
+        <li><a href="#">General</a></li>
+        <li><a href="#" class="icon solid fa-heart">28</a></li>
+        <li><a href="#" class="icon solid fa-comment">128</a></li>
+    </ul>
+</footer>
+</article>
+
+{% endblock %}
+
+
+{% block post2 %}
+<article class="post">
+    <header>
+        <div class="title">
+            <h2><a href="single.html">Вводный блок по курсу:</a></h2>
+            <p>Вы можете приступить к изучению</p>
+        </div>
+
+
+    <div class="meta">
+        <time class="published" datetime="2015-11-01">Вводный курс</time>
+        <time class="published" datetime="2015-11-01">Всего уроков: </time>
+        <h2>{{total_articles}}</h2>
+    </div>
+
+    </header>
+    <a href="single.html" class="image featured"><img src="static/main_page/images/fill_pale.jpg" alt="" /></a>
+    <p><h2>Уроки: </h2></p>
+
+    {% for item in all_articles %}
+    <h3>{{item.lesson_number}} - <a href="/courses/{{item.id}}" >{{item.lesson_name}}</a></h3>
+    {% endfor %}
+    <br>
+    <br>
+
+
+
+</article>
+
+{% endblock %}
+
+
+
+

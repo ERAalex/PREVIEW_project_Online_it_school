@@ -1,0 +1,68 @@
+{% extends "courses/courses_index.html" %}
+{% load static %}
+
+		{% block name_page %}
+		<title>Python - Урок № {{article.lesson_number}}</title>
+		{% endblock %}
+
+
+
+{% block the_main_post %}
+<header>
+    <div class="title">
+        <h2><a href="#" ><center>Урок № {{article.lesson_number}}: <br> {{article.lesson_name}}.</center></a></h2>
+        <p>Python — высокоуровневый язык программирования, отличающийся эффективностью,
+            простотой и универсальностью использования.</p>
+    </div>
+
+    <div class="meta">
+        <time class="published" datetime="2015-11-01">{{date_now}}</time>
+        <a href="#" class="author"><span class="name">{{ user.username }}</span>
+            <img src="{% static 'main_gym_page/images/avatar.jpg' %}" alt="" /></a>
+    </div>
+
+
+</header>
+<a href="#" class="image featured"><img src="{% static 'main_gym_page/images/post_0_banner.jpg' %}" alt="" /></a>
+
+<footer>
+    <ul class="actions">
+<li><a href="https://tproger.ru/articles/podrobnoe-opisanie-jazyka-python-dlja-nachinajushhih/" target="_blank"
+       class="button large">Продолжить читать</a></li>
+    </ul>
+    <ul class="stats">
+        <li><a href="#">General</a></li>
+        <li><a href="#" class="icon solid fa-heart">28</a></li>
+        <li><a href="#" class="icon solid fa-comment">128</a></li>
+    </ul>
+</footer>
+</article>
+
+{% endblock %}
+
+
+{% block post2 %}
+<article class="post">
+
+    <a href="#" class="image featured"><img src="{% static 'main_gym_page/images/fill_pale.jpg' %}" alt="" /></a>
+    <p><h2>Теория: </h2></p>
+    {{article.theory|safe}}
+
+
+</article>
+
+
+<article class="post">
+    <p><h2>Задание: </h2></p>
+    {{article.tasks|safe}}
+
+    <br>
+    <br>
+    <ul class="actions">
+        <li><a href="{% url 'course_python' %}" class="button large">Вернуться</a></li>
+    </ul>
+
+</article>
+
+{% endblock %}
+
